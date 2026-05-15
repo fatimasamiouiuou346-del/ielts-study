@@ -23,92 +23,112 @@ body{
   position:sticky;top:0;z-index:10;background:var(--bg);
   padding:8px 0 6px;border-bottom:1px solid var(--border);
 }
-.header h1{font-size:16px;font-weight:620;margin-bottom:6px}
+.header h1{font-size:16px;font-weight:620;margin-bottom:4px}
+
+/* Progress */
+.progress-wrap{margin-bottom:6px}
+.progress-label{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-bottom:2px}
+.progress-bar{height:4px;background:#e8e8e4;border-radius:10px;overflow:hidden}
+.progress-fill{height:100%;background:var(--accent);border-radius:10px;transition:width .3s}
+
 .search-wrap{position:relative;margin-bottom:6px}
 .search-wrap input{
-  width:100%;padding:8px 12px 8px 32px;font-size:14px;
-  border:1px solid var(--border);border-radius:20px;background:var(--card);
+  width:100%;padding:7px 12px 7px 30px;font-size:13px;
+  border:1px solid var(--border);border-radius:18px;background:var(--card);
   outline:none;-webkit-appearance:none;
 }
 .search-wrap input:focus{border-color:var(--accent)}
-.search-icon{
-  position:absolute;left:11px;top:50%;transform:translateY(-50%);
-  color:var(--muted);font-size:14px;pointer-events:none;
-}
+.search-icon{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:12px;pointer-events:none}
 
 /* Tabs */
-.tabs{
-  display:flex;gap:6px;padding:6px 0;overflow-x:auto;
-  scrollbar-width:none;-ms-overflow-style:none;
-}
+.tabs{display:flex;gap:5px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
 .tabs::-webkit-scrollbar{display:none}
 .tab{
-  flex-shrink:0;padding:6px 14px;font-size:12px;font-weight:560;
-  border-radius:16px;background:var(--card);border:1px solid var(--border);
+  flex-shrink:0;padding:5px 12px;font-size:11px;font-weight:560;
+  border-radius:14px;background:var(--card);border:1px solid var(--border);
   cursor:pointer;color:var(--muted);transition:all .15s;
 }
 .tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
 
 /* Section title */
-.sec-title{
-  font-size:13px;font-weight:640;color:var(--accent);margin:14px 0 6px;
-  padding-left:4px;letter-spacing:0.3px;
-}
+.sec-title{font-size:12px;font-weight:640;color:var(--accent);margin:12px 0 5px;padding-left:4px}
 
 /* Category card */
 .cat-card{
-  background:var(--card);border-radius:var(--radius);margin-bottom:8px;
+  background:var(--card);border-radius:var(--radius);margin-bottom:7px;
   border:1px solid var(--border);overflow:hidden;
 }
 .cat-header{
   display:flex;align-items:center;justify-content:space-between;
-  padding:10px 12px;cursor:pointer;user-select:none;
-  -webkit-user-select:none;font-size:13px;font-weight:560;
+  padding:9px 11px;cursor:pointer;user-select:none;-webkit-user-select:none;
+  font-size:12.5px;font-weight:560;gap:8px;
 }
-.cat-arrow{font-size:10px;color:var(--muted);transition:transform .2s}
+.cat-header-left{display:flex;align-items:center;gap:6px;min-width:0;flex:1}
+.cat-count{font-size:10px;color:var(--muted)}
+.cat-arrow{font-size:9px;color:var(--muted);transition:transform .2s;flex-shrink:0}
 .cat-card.open .cat-arrow{transform:rotate(90deg)}
-.cat-body{display:none;padding:0 12px 10px}
+.cat-body{display:none;padding:0 10px 8px}
 .cat-card.open .cat-body{display:block}
+.cat-progress{font-size:10px;color:var(--accent);min-width:30px;text-align:right}
 
 /* Word row */
 .word-row{
-  display:flex;align-items:baseline;padding:6px 0;
-  border-bottom:1px solid #f5f5f2;font-size:13px;gap:8px;
+  display:flex;align-items:center;padding:5px 0;
+  border-bottom:1px solid #f5f5f2;font-size:12.5px;gap:7px;
+  cursor:pointer;border-radius:4px;transition:background .12s;
+  -webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none;
 }
+.word-row:active{background:#f5f5f2}
 .word-row:last-child{border-bottom:none}
-.word-en{font-weight:540;min-width:80px;color:#2c2c2c}
-.word-cn{color:var(--muted);min-width:50px;font-size:12px}
-.word-trap{font-size:11px;color:var(--danger);flex:1;line-height:1.3}
-
-/* Highlight */
-.hl{background:#fff3cd;padding:1px 4px;border-radius:3px;font-weight:600}
-.err{color:var(--danger);text-decoration:line-through;margin-right:4px;font-size:11px}
-.ok{color:var(--accent);font-weight:600}
-
-/* Speed check list */
-.speed-item{
-  display:flex;align-items:center;padding:7px 8px;gap:10px;
-  border-bottom:1px solid #f5f5f2;font-size:13px;
+.word-row.done .word-en,.word-row.done .word-cn,.word-row.done .word-trap{
+  text-decoration:line-through;color:#bbb !important;
 }
-.speed-num{font-size:11px;color:var(--muted);min-width:18px}
-.speed-cn{flex:1}
-.speed-en{color:var(--muted);font-size:12px}
 
-/* No results */
-.no-result{text-align:center;padding:40px 20px;color:var(--muted);font-size:14px}
+/* Checkbox */
+.cb{
+  flex-shrink:0;width:17px;height:17px;
+  border:2px solid #d0d0cc;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .15s;
+}
+.word-row.done .cb{background:var(--accent);border-color:var(--accent)}
+.cb::after{
+  content:'';display:none;width:4px;height:7px;
+  border:solid #fff;border-width:0 2px 2px 0;
+  transform:rotate(45deg) translate(-1px,-1px);
+}
+.word-row.done .cb::after{display:block}
 
-/* Footer */
-.footer{text-align:center;padding:20px;font-size:11px;color:#ccc}
+.word-info{flex:1;min-width:0;display:flex;flex-wrap:wrap;align-items:baseline;gap:0 7px}
+.word-en{font-weight:540;color:#2c2c2c;white-space:nowrap}
+.word-cn{color:var(--muted);font-size:11px;white-space:nowrap}
+.word-trap{font-size:10px;color:var(--danger);line-height:1.3;flex-basis:100%}
 
-/* Uppercase label */
+/* Tags */
 .tag{
-  display:inline-block;font-size:9px;font-weight:640;padding:1px 6px;
-  border-radius:3px;margin-right:4px;text-transform:uppercase;letter-spacing:0.3px;
+  display:inline-block;font-size:8px;font-weight:640;padding:1px 5px;
+  border-radius:3px;margin-right:3px;text-transform:uppercase;letter-spacing:.3px;
+  vertical-align:middle;
 }
 .tag-trap{background:#fde8e8;color:var(--danger)}
 .tag-silent{background:#e8f0ff;color:#2563eb}
 .tag-double{background:#fef3c7;color:#b45309}
 .tag-ei{background:#f0fdf4;color:#15803d}
+
+/* Highlight */
+.hl{background:#fff3cd;padding:1px 3px;border-radius:2px;font-weight:600}
+
+.no-result{text-align:center;padding:40px 20px;color:var(--muted);font-size:14px}
+
+/* Reset */
+.reset-wrap{text-align:center;margin-top:20px}
+.reset-btn{
+  padding:7px 22px;font-size:11px;color:var(--muted);
+  background:none;border:1px solid #ddd;border-radius:16px;
+  cursor:pointer;transition:all .2s;
+}
+.reset-btn:hover{color:var(--danger);border-color:var(--danger)}
+.footer{text-align:center;padding:14px;font-size:10px;color:#ccc}
 </style>
 </head>
 <body>
@@ -116,8 +136,17 @@ body{
 
 <div class="header">
   <h1>听力场景词汇</h1>
+  <div class="progress-wrap">
+    <div class="progress-label">
+      <span id="progressLabel">已掌握 0/0</span>
+      <span id="progressPct">0%</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressBar" style="width:0%"></div>
+    </div>
+  </div>
   <div class="search-wrap">
-    <span class="search-icon">🔍</span>
+    <span class="search-icon">&#128269;</span>
     <input type="text" id="search" placeholder="搜索词汇..." oninput="doSearch()">
   </div>
   <div class="tabs">
@@ -130,7 +159,8 @@ body{
 </div>
 
 <div id="content"></div>
-<div class="footer">单词每天背 · 5.29 加油</div>
+<div class="reset-wrap"><button class="reset-btn" onclick="resetAll()">重置全部进度</button></div>
+<div class="footer">进度自动保存 · 5.29 加油</div>
 
 </div>
 
@@ -151,553 +181,422 @@ const SECTIONS = [
     ["balcony","阳台","不是 balconey",0]
   ]},
   { title:"租房相关词汇", words:[
-    ["landlord","房东","不是 landload",0],
-    ["tenant","租客","不是 tenent",0],
-    ["deposit","押金","不是 deposite",0],
-    ["contract","合同","不是 contruct",0],
-    ["furnished","带家具的","-ed 不要漏",0],
-    ["garage","车库","不是 garadge",0],
-    ["basement","地下室","不是 basemant",0],
-    ["central heating","中央供暖","不是 centeral",0],
-    ["attic","阁楼","不是 attick",0],
-    ["emergency exit","紧急出口","不是 emergancy",0]
+    ["landlord","房东","不是 landload",0],["tenant","租客","不是 tenent",0],
+    ["deposit","押金","不是 deposite",0],["contract","合同","不是 contruct",0],
+    ["furnished","带家具的","-ed 不要漏",0],["garage","车库","不是 garadge",0],
+    ["basement","地下室","不是 basemant",0],["central heating","中央供暖","不是 centeral",0],
+    ["attic","阁楼","不是 attick",0],["emergency exit","紧急出口","不是 emergancy",0]
   ]},
   { title:"住房设施拼写", words:[
-    ["kitchen","厨房","kichen（漏t）",0],
-    ["bathroom","卫生间","bathrom（漏o）",0],
-    ["downstairs","楼下","一个词！",0],
-    ["cupboard","碗柜","cuboard（漏p）",0],
-    ["ceiling","天花板","ceilling（单l）",0],
-    ["curtain","窗帘","curtan",0],
-    ["carpet","地毯","carpent",0],
-    ["microwave","微波炉","microwayve",0],
+    ["kitchen","厨房","kichen（漏t）",0],["bathroom","卫生间","bathrom（漏o）",0],
+    ["downstairs","楼下","一个词！",0],["cupboard","碗柜","cuboard（漏p）",0],
+    ["ceiling","天花板","ceilling（单l）",0],["curtain","窗帘","curtan",0],
+    ["carpet","地毯","carpent",0],["microwave","微波炉","microwayve",0],
     ["refrigerator","冰箱","refridgerator",0]
   ]},
   { title:"酒店与旅游", words:[
-    ["reservation","预订","不是 reservasion",1],
-    ["receipt","收据","p不发音！不是 reciept",0],
-    ["receptionist","前台","不是 receiptionist",1],
-    ["passport","护照","双s，不是 pasport",1],
-    ["luggage","行李","双g",1],
-    ["suite","套房","读'sweet'",0],
-    ["twin room","双床房","不是 twim",0],
-    ["brochure","宣传册","不是 broshure",0],
-    ["itinerary","行程表","不是 itinary",0],
-    ["continental breakfast","欧陆早餐","conti-nen-tal",0]
+    ["reservation","预订","不是 reservasion",1],["receipt","收据","p不发音！不是 reciept",0],
+    ["receptionist","前台","不是 receiptionist",1],["passport","护照","双s，不是 pasport",1],
+    ["luggage","行李","双g",1],["suite","套房","读'sweet'",0],
+    ["twin room","双床房","不是 twim",0],["brochure","宣传册","不是 broshure",0],
+    ["itinerary","行程表","不是 itinary",0],["continental breakfast","欧陆早餐","conti-nen-tal",0]
   ]},
   { title:"交通出行", words:[
-    ["vehicle","车辆","h不发音！不是 vehical",0],
-    ["passenger","乘客","双s，不是 pasenger",1],
-    ["carriage","车厢","不是 carrige",0],
-    ["platform","站台","不是 platfrom",0],
-    ["departure","出发","不是 deparchure",0],
-    ["arrival","到达","双r，不是 arival",1],
-    ["terminal","航站楼","不是 termenal",0],
-    ["excursion","短途旅行","不是 excusion",0],
-    ["souvenir","纪念品","不是 souvenier",0],
-    ["insurance","保险","不是 insurence",0]
+    ["vehicle","车辆","h不发音！不是 vehical",0],["passenger","乘客","双s",1],
+    ["carriage","车厢","不是 carrige",0],["platform","站台","不是 platfrom",0],
+    ["departure","出发","不是 deparchure",0],["arrival","到达","双r",1],
+    ["terminal","航站楼","不是 termenal",0],["excursion","短途旅行","不是 excusion",0],
+    ["souvenir","纪念品","不是 souvenier",0],["insurance","保险","不是 insurence",0]
   ]},
   { title:"求职与工作", words:[
-    ["interview","面试","不是 interveiw",0],
-    ["referee","推荐人","不是 referree",0],
-    ["qualification","资质","不是 quallification",0],
-    ["experience","经历","不是 experiance",0],
-    ["salary","薪水","不是 salery",0],
-    ["colleague","同事","不是 colleage！注意ea",0],
-    ["certificate","证书","不是 certifacate",0],
-    ["overtime","加班","一个词",0],
-    ["commission","提成/佣金","双m双s",1],
-    ["temporary","临时的","不是 temperary",0],
-    ["permanent","永久的","不是 permenent",0],
-    ["vacancy","空位","不是 vacency",0],
+    ["interview","面试","不是 interveiw",0],["referee","推荐人","不是 referree",0],
+    ["qualification","资质","不是 quallification",0],["experience","经历","不是 experiance",0],
+    ["salary","薪水","不是 salery",0],["colleague","同事","不是 colleage！注意ea",0],
+    ["certificate","证书","不是 certifacate",0],["overtime","加班","一个词",0],
+    ["commission","提成/佣金","双m双s",1],["temporary","临时的","不是 temperary",0],
+    ["permanent","永久的","不是 permenent",0],["vacancy","空位","不是 vacency",0],
     ["application form","申请表","application 双p",1]
   ]},
   { title:"图书馆与校园", words:[
-    ["librarian","图书管理员","不是 libarian",0],
-    ["catalogue","目录","不是 catolog",0],
-    ["reference","参考","不是 referance",0],
-    ["bibliography","参考书目","不是 biblography",0],
-    ["periodical","期刊","不是 periodicall",0],
-    ["extension","续借","不是 extention",0],
-    ["overdue","过期的","一个词",0],
-    ["photocopier","复印机","注意 ier",0],
+    ["librarian","图书管理员","不是 libarian",0],["catalogue","目录","不是 catolog",0],
+    ["reference","参考","不是 referance",0],["bibliography","参考书目","不是 biblography",0],
+    ["periodical","期刊","不是 periodicall",0],["extension","续借","不是 extention",0],
+    ["overdue","过期的","一个词",0],["photocopier","复印机","注意 ier",0],
     ["dissertation","学位论文","双s",1]
   ]},
   { title:"银行与支付", words:[
-    ["accountant","会计师","双c，不是 acountant",1],
-    ["mortgage","按揭","t不发音！不是 morgage",0],
-    ["budget","预算","不是 buget",0],
-    ["cheque / check","支票","英 cheque 美 check",0],
-    ["interest rate","利率","不是 intest",0],
-    ["overdraft","透支","不是 overdraftt",0],
+    ["accountant","会计师","双c",1],["mortgage","按揭","t不发音！不是 morgage",0],
+    ["budget","预算","不是 buget",0],["cheque","支票","英 cheque 美 check",0],
+    ["interest rate","利率","不是 intest",0],["overdraft","透支","不是 overdraftt",0],
     ["statement","账单","不是 statemant",0]
   ]},
-  { title:"数字与日期（Section 1 保分）", words:[
-    ["first","第一","不是 frist",0],
-    ["second","第二","secon——d（不要掉d）",0],
-    ["fifth","第五","fith（漏f）",0],
-    ["eighth","第八","eigth（漏h）",0],
-    ["ninth","第九","nineth（去e）",0],
-    ["twelfth","第十二","twelvth（ve变f）",0],
-    ["twentieth","第二十","",0],
-    ["Monday","星期一","不是 Manday",0],
-    ["Tuesday","星期二","u不发音！不是 Tusday",0],
-    ["Wednesday","星期三","d不发音！不是 Wensday",0],
-    ["Thursday","星期四","不是 Thirsday",0],
-    ["Friday","星期五","不是 Fryday",0],
-    ["Saturday","星期六","不是 Saterday",0],
-    ["January","一月","不是 Janurary",0],
-    ["February","二月","r不发音！不是 Febuary",0],
-    ["August","八月","不是 Augost",0],
-    ["September","九月","不是 Setember",0],
-    ["October","十月","不是 Octoper",0],
-    ["November","十一月","不是 Novemper",0],
-    ["December","十二月","不是 Decemeber",0]
+  { title:"数字与日期（保分）", words:[
+    ["first","第一","不是 frist",0],["second","第二","secon——d",0],
+    ["fifth","第五","fith（漏f）",0],["eighth","第八","eigth（漏h）",0],
+    ["ninth","第九","nineth（去e）",0],["twelfth","第十二","twelvth",0],
+    ["twentieth","第二十","",0],["Monday","星期一","不是 Manday",0],
+    ["Tuesday","星期二","u不发音",0],["Wednesday","星期三","d不发音！",0],
+    ["Thursday","星期四","不是 Thirsday",0],["Friday","星期五","不是 Fryday",0],
+    ["Saturday","星期六","不是 Saterday",0],["January","一月","不是 Janurary",0],
+    ["February","二月","r不发音！",0],["August","八月","不是 Augost",0],
+    ["September","九月","不是 Setember",0],["October","十月","不是 Octoper",0],
+    ["November","十一月","不是 Novemper",0],["December","十二月","不是 Decemeber",0]
   ]}
 ]},
 { name:"Section 2 · 公共场所", cats:[
   { title:"方位词（地图题必备）", words:[
-    ["northeast / northwest","东北 / 西北","一个词！",0],
-    ["southeast / southwest","东南 / 西南","一个词！",0],
-    ["opposite","在…对面","不是 oposite",0],
-    ["straight ahead","正前方","straight 不是 straiht",0],
-    ["parallel to","与…平行","双l，不是 paralel",1],
-    ["clockwise","顺时针","不是 clokwise",0],
-    ["anticlockwise","逆时针","英国用法",0],
-    ["corridor","走廊","双r",1],
-    ["intersection","交叉路口","不是 interseccion",0],
-    ["adjacent to","紧挨着","不是 adjecent",0]
+    ["northeast","东北","一个词",0],["northwest","西北","一个词",0],
+    ["southeast","东南","一个词",0],["southwest","西南","一个词",0],
+    ["opposite","在…对面","不是 oposite",0],["straight ahead","正前方","straight 不是 straiht",0],
+    ["parallel to","与…平行","双l",1],["clockwise","顺时针","不是 clokwise",0],
+    ["anticlockwise","逆时针","英国用法",0],["corridor","走廊","双r",1],
+    ["intersection","交叉路口","不是 interseccion",0],["adjacent to","紧挨着","不是 adjecent",0]
   ]},
   { title:"地图高频地点", words:[
-    ["reception","接待处","不是 receipeition",0],
-    ["foyer","门厅","读'foy-ay'",0],
-    ["auditorium","礼堂","不是 auditoriem",0],
-    ["amphitheatre","露天剧场","不是 anfitheatre",0],
-    ["car park","停车场","英国用法（两个词）",0],
-    ["pedestrian crossing","人行横道","pedestrian难拼",0],
-    ["roundabout","环岛","一个词",0],
-    ["footbridge","人行天桥","不是 footbrige",0],
-    ["underpass","地下通道","双s",1],
-    ["signpost","路标","一个词",0],
+    ["reception","接待处","不是 receipeition",0],["foyer","门厅","读'foy-ay'",0],
+    ["auditorium","礼堂","不是 auditoriem",0],["amphitheatre","露天剧场","不是 anfitheatre",0],
+    ["car park","停车场","英国用法",0],["pedestrian crossing","人行横道","pedestrian难拼",0],
+    ["roundabout","环岛","一个词",0],["footbridge","人行天桥","不是 footbrige",0],
+    ["underpass","地下通道","双s",1],["signpost","路标","一个词",0],
     ["notice board","公告栏","两个词",0]
   ]},
   { title:"旅游与景点", words:[
-    ["exhibition","展览","h不发音！ex-hibition",0],
-    ["gallery","画廊","双l，不是 galery",1],
-    ["museum","博物馆","不是 musem",0],
-    ["castle","城堡","t不发音，不是 casle",0],
-    ["cathedral","大教堂","不是 cathederal",0],
-    ["ancient","古代的","不是 anceint",0],
-    ["architecture","建筑风格","不是 archetecture",0],
-    ["sculpture","雕塑","c不发音！scul-p-ture",0],
-    ["portrait","肖像","不是 portrate",0],
-    ["landscape","风景/风景画","不是 landscope",0],
-    ["waterfall","瀑布","双l",1],
-    ["coastline","海岸线","一个词",0],
+    ["exhibition","展览","h不发音！",0],["gallery","画廊","双l",1],
+    ["museum","博物馆","不是 musem",0],["castle","城堡","t不发音",0],
+    ["cathedral","大教堂","不是 cathederal",0],["ancient","古代的","不是 anceint",0],
+    ["architecture","建筑风格","不是 archetecture",0],["sculpture","雕塑","c不发音",0],
+    ["portrait","肖像","不是 portrate",0],["landscape","风景/风景画","不是 landscope",0],
+    ["waterfall","瀑布","双l",1],["coastline","海岸线","一个词",0],
     ["botanical garden","植物园","botanical 不是 botanicle",0]
   ]},
   { title:"设施与服务", words:[
-    ["cloakroom","衣帽间/卫生间","不是 clokeroom",0],
-    ["laundry","洗衣房","不是 laundary",0],
-    ["nursery","托儿所","不是 nersery",0],
-    ["canteen","食堂","不是 cantean",0],
-    ["cafeteria","自助餐厅","不是 cafetiria",0],
-    ["counsellor","顾问/辅导员","双l！不是 councilor",1],
-    ["physiotherapist","理疗师","不是 fisiotherapist",0],
-    ["pharmacy","药房","不是 farmacy",0],
-    ["optician","验光师","不是 optition",0],
-    ["dentist","牙医","不是 dantist",0],
+    ["cloakroom","衣帽间/卫生间","不是 clokeroom",0],["laundry","洗衣房","不是 laundary",0],
+    ["nursery","托儿所","不是 nersery",0],["canteen","食堂","不是 cantean",0],
+    ["cafeteria","自助餐厅","不是 cafetiria",0],["counsellor","顾问/辅导员","双l！不是 councilor",1],
+    ["physiotherapist","理疗师","不是 fisiotherapist",0],["pharmacy","药房","不是 farmacy",0],
+    ["optician","验光师","不是 optition",0],["dentist","牙医","不是 dantist",0],
     ["surgeon","外科医生","不是 surgen",0]
   ]},
   { title:"报名与活动", words:[
-    ["registration","注册","不是 registrasion",0],
-    ["enrolment","报名/入学","双l英式",1],
-    ["questionnaire","调查问卷","双n！question-naire",1],
-    ["assessment","评估","双s",1],
-    ["committee","委员会","双m双t双e",1],
-    ["tutorial","辅导课","不是 tuturial",0],
-    ["seminar","研讨会","不是 semanar",0],
-    ["feedback","反馈","一个词",0],
-    ["brochure","宣传册","不是 broshure",0],
-    ["leaflet","传单","不是 leaflett",0]
+    ["registration","注册","不是 registrasion",0],["enrolment","报名/入学","双l英式",1],
+    ["questionnaire","调查问卷","双n！",1],["assessment","评估","双s",1],
+    ["committee","委员会","双m双t双e",1],["tutorial","辅导课","不是 tuturial",0],
+    ["seminar","研讨会","不是 semanar",0],["feedback","反馈","一个词",0],
+    ["brochure","宣传册","不是 broshure",0],["leaflet","传单","不是 leaflett",0]
   ]},
   { title:"运动与健康", words:[
-    ["yoga","瑜伽","不是 yogo",0],
-    ["badminton","羽毛球","不是 badmington",0],
-    ["squash","壁球","双s（结尾）",0],
-    ["tennis court","网球场","不是 tennes",0],
-    ["gymnasium / gym","健身房","",0],
-    ["treadmill","跑步机","双l，不是 treadmil",1],
-    ["rowing machine","划船机","w不发音",0],
-    ["weightlifting","举重","t不发音",0],
-    ["calories","卡路里","不是 caleries",0],
-    ["cholesterol","胆固醇","不是 cholestrol",0],
-    ["carbohydrate","碳水化合物","不是 carbohidrate",0],
-    ["protein","蛋白质","不是 protien",0],
-    ["vegetarian","素食者","不是 vegeterian",0],
-    ["allergy / allergic","过敏","双l",1]
+    ["yoga","瑜伽","不是 yogo",0],["badminton","羽毛球","不是 badmington",0],
+    ["squash","壁球","双s",0],["tennis court","网球场","不是 tennes",0],
+    ["gymnasium / gym","健身房","",0],["treadmill","跑步机","双l",1],
+    ["rowing machine","划船机","w不发音",0],["weightlifting","举重","t不发音",0],
+    ["calories","卡路里","不是 caleries",0],["cholesterol","胆固醇","不是 cholestrol",0],
+    ["carbohydrate","碳水化合物","不是 carbohidrate",0],["protein","蛋白质","不是 protien",0],
+    ["vegetarian","素食者","不是 vegeterian",0],["allergy / allergic","过敏","双l",1]
   ]}
 ]},
 { name:"Section 3 · 学术讨论", cats:[
   { title:"课程与学业", words:[
-    ["compulsory","必修的","不是 compolsory",0],
-    ["optional","选修的","",0],
-    ["curriculum","课程大纲","双r",1],
-    ["syllabus","教学大纲","双l",1],
-    ["semester","学期","不是 semster",0],
-    ["scholarship","奖学金","不是 scholarship（漏o）",0],
-    ["undergraduate","本科生","一个词",0],
-    ["postgraduate","研究生","一个词",0],
-    ["bachelor","学士","不是 bachelerr",0],
-    ["diploma","文凭","不是 deploma",0],
-    ["lecture","讲座","不是 lechure",0],
-    ["deadline","截止日期","",0],
-    ["extension","延期","不是 extention",0],
-    ["credit","学分","不是 creadit",0]
+    ["compulsory","必修的","不是 compolsory",0],["optional","选修的","",0],
+    ["curriculum","课程大纲","双r",1],["syllabus","教学大纲","双l",1],
+    ["semester","学期","不是 semster",0],["scholarship","奖学金","不是 scho-larship",0],
+    ["undergraduate","本科生","一个词",0],["postgraduate","研究生","一个词",0],
+    ["bachelor","学士","不是 bachelerr",0],["diploma","文凭","不是 deploma",0],
+    ["lecture","讲座","不是 lechure",0],["deadline","截止日期","",0],
+    ["extension","延期","不是 extention",0],["credit","学分","不是 creadit",0]
   ]},
   { title:"作业与论文", words:[
-    ["dissertation","学位论文","双s",1],
-    ["thesis","论文（硕博）","复数是 theses",0],
-    ["essay","短文/论文","双s",1],
-    ["portfolio","作品集","不是 portfolieo",0],
-    ["presentation","演讲","不是 presentasion",0],
-    ["group discussion","小组讨论","discussion不是discushion",0],
-    ["case study","案例分析","",0],
-    ["survey","调查","不是 servey",0],
-    ["experiment","实验","不是 experimant",0],
-    ["observation","观察","不是 observasion",0]
+    ["dissertation","学位论文","双s",1],["thesis","论文（硕博）","复数是 theses",0],
+    ["essay","短文/论文","双s",1],["portfolio","作品集","不是 portfolieo",0],
+    ["presentation","演讲","不是 presentasion",0],["group discussion","小组讨论","discussion不是discushion",0],
+    ["case study","案例分析","",0],["survey","调查","不是 servey",0],
+    ["experiment","实验","不是 experimant",0],["observation","观察","不是 observasion",0]
   ]},
   { title:"研究动作词", words:[
-    ["analyse","分析（动词）","名词是 analysis",0],
-    ["evaluate","评估","不是 avaluate",0],
-    ["summarise","总结","英式s，美式z",0],
-    ["research","研究","不是 reserch",0],
-    ["investigate","调查","不是 investagate",0],
-    ["collect data","收集数据","data读'day-ta'",0],
-    ["conduct a survey","进行问卷调查","",0],
-    ["draft","草稿","不是 draught",0],
-    ["revise","修改/复习","",0],
-    ["proofread","校对","一个词",0],
-    ["plagiarism","剽窃","不是 plagiarisem",0],
-    ["bibliography","参考文献","不是 biblography",0],
+    ["analyse","分析（动词）","名词是 analysis",0],["evaluate","评估","不是 avaluate",0],
+    ["summarise","总结","英式s，美式z",0],["research","研究","不是 reserch",0],
+    ["investigate","调查","不是 investagate",0],["collect data","收集数据","data读'day-ta'",0],
+    ["conduct a survey","进行问卷调查","",0],["draft","草稿","不是 draught",0],
+    ["revise","修改/复习","",0],["proofread","校对","一个词",0],
+    ["plagiarism","剽窃","不是 plagiarisem",0],["bibliography","参考文献","",0],
     ["appendix","附录","复数是 appendices",0]
   ]},
   { title:"数据与研究", words:[
-    ["statistics","统计数据","不是 stastics",0],
-    ["questionnaire","调查问卷","双n",1],
-    ["interviewee","被访者","-ee 是被…的人",0],
-    ["interviewer","采访者","-er 是执行…的人",0],
-    ["respondent","受访者","注意中间的d",0],
-    ["hypothesis","假设","不是 hipothesis",0],
-    ["methodology","方法论","不是 methodolgy",0],
-    ["sample","样本","不是 sampel",0],
-    ["percentage","百分比","不是 percentege",0],
-    ["significant","显著的","不是 signaficant",0],
-    ["sufficient","足够的","双f",1],
-    ["approximate","大约的","双p",1],
-    ["precise","精确的","不是 presise",0],
-    ["valid","有效的","",0],
-    ["reliable","可靠的","不是 relable",0],
-    ["biased","有偏见的","不是 biassed → biased",0]
+    ["statistics","统计数据","不是 stastics",0],["questionnaire","调查问卷","双n",1],
+    ["interviewee","被访者","-ee 被…的人",0],["interviewer","采访者","-er 执行…的人",0],
+    ["respondent","受访者","注意d",0],["hypothesis","假设","不是 hipothesis",0],
+    ["methodology","方法论","不是 methodolgy",0],["sample","样本","不是 sampel",0],
+    ["percentage","百分比","不是 percentege",0],["significant","显著的","不是 signaficant",0],
+    ["sufficient","足够的","双f",1],["approximate","大约的","双p",1],
+    ["precise","精确的","不是 presise",0],["valid","有效的","",0],
+    ["reliable","可靠的","不是 relable",0],["biased","有偏见的","不是 biassed",0]
   ]},
-  { title:"学生最常拼错的「简单词」", words:[
-    ["environment","环境","enviro-n-ment（漏n）",0],
-    ["government","政府","gover-n-ment（漏n）",0],
-    ["knowledge","知识","knowle-d-ge（漏d）",0],
-    ["language","语言","lang-u-age（漏u）",0],
-    ["argument","争论","argue去e+ment",0],
-    ["truly","真正地","true去e+ly",0],
-    ["therefore","因此","therefor（漏e）",0],
-    ["throughout","贯穿","througout（漏h）",0],
-    ["unfortunately","不幸地","unfortunatly（漏e）",0],
-    ["definitely","肯定地","不是 definatly！",0],
+  { title:"最常拼错的「简单词」", words:[
+    ["environment","环境","enviro-n-ment（漏n）",0],["government","政府","gover-n-ment（漏n）",0],
+    ["knowledge","知识","knowle-d-ge（漏d）",0],["language","语言","lang-u-age（漏u）",0],
+    ["argument","争论","argue去e+ment",0],["truly","真正地","true去e+ly",0],
+    ["therefore","因此","therefor（漏e）",0],["throughout","贯穿","througout（漏h）",0],
+    ["unfortunately","不幸地","unfortunatly（漏e）",0],["definitely","肯定地","不是 definatly！",0],
     ["separate","分开的","se-p-a-rate（a不是e！）",0]
   ]},
   { title:"ie/ei 陷阱", words:[
-    ["receive","收到","after c → ei！不是 recieve",0],
-    ["receipt","收据","after c → ei",0],
-    ["ceiling","天花板","after c → ei",0],
-    ["believe","相信","not after c → ie",0],
-    ["achieve","达到","not after c → ie",0],
-    ["field","领域","not after c → ie",0],
-    ["foreign","外国的","例外！g不发音",0],
-    ["height","高度","例外！",0],
-    ["weight","重量","例外！",0],
-    ["science","科学","sc-ie-nce",0]
+    ["receive","收到","after c → ei",0],["receipt","收据","after c → ei",0],
+    ["ceiling","天花板","after c → ei",0],["believe","相信","not after c → ie",0],
+    ["achieve","达到","ie",0],["field","领域","ie",0],
+    ["foreign","外国的","例外！g不发音",0],["height","高度","例外！",0],
+    ["weight","重量","例外！",0],["science","科学","sc-ie-nce",0]
   ]},
   { title:"态度与观点词", words:[
-    ["challenging","有挑战的","",0],
-    ["fascinating","吸引人的","双s",0],
-    ["tedious","乏味的","",0],
-    ["rewarding","有收获的","",0],
-    ["ridiculous","荒谬的","",0],
-    ["convinced","信服的","",0],
-    ["overwhelmed","被压垮的","",0],
-    ["worth doing","值得做","",0]
+    ["challenging","有挑战的","",0],["fascinating","吸引人的","",0],
+    ["tedious","乏味的","",0],["rewarding","有收获的","",0],
+    ["ridiculous","荒谬的","",0],["convinced","信服的","",0],
+    ["overwhelmed","被压垮的","",0],["worth doing","值得做","",0]
   ]}
 ]},
 { name:"Section 4 · 学术讲座", cats:[
   { title:"动物与生物", words:[
-    ["species","物种","单复数同形！不是 specy",0],
-    ["crocodile","鳄鱼","不是 crockodile",0],
-    ["penguin","企鹅","不是 pinguin",0],
-    ["kangaroo","袋鼠","双a",0],
-    ["chimpanzee","黑猩猩","不是 chimpanzee→chim-pan-zee",0],
-    ["dolphin","海豚","不是 dolphie",0],
-    ["whale","鲸","不是 whail",0],
-    ["shark","鲨鱼","不是 shak",0],
-    ["caterpillar","毛虫","双l",1],
-    ["mosquito","蚊子","不是 moscuito",0],
-    ["insect","昆虫","不是 insept",0],
-    ["mammal","哺乳动物","双m",1],
-    ["reptile","爬行动物","不是 repitile",0],
-    ["amphibian","两栖动物","不是 anfibian",0],
-    ["predator","捕食者","不是 predetor",0],
-    ["prey","猎物","不是 pray（那是祷告！）",0],
-    ["habitat","栖息地","不是 habitt",0],
-    ["ecosystem","生态系统","一个词",0],
-    ["extinction","灭绝","不是 extincsion",0],
-    ["endangered","濒危的","中间有d",0]
+    ["species","物种","单复数同形！不是 specy",0],["crocodile","鳄鱼","不是 crockodile",0],
+    ["penguin","企鹅","不是 pinguin",0],["kangaroo","袋鼠","双a",0],
+    ["chimpanzee","黑猩猩","chim-pan-zee",0],["dolphin","海豚","不是 dolphie",0],
+    ["whale","鲸","不是 whail",0],["shark","鲨鱼","不是 shak",0],
+    ["caterpillar","毛虫","双l",1],["mosquito","蚊子","不是 moscuito",0],
+    ["insect","昆虫","不是 insept",0],["mammal","哺乳动物","双m",1],
+    ["reptile","爬行动物","不是 repitile",0],["amphibian","两栖动物","不是 anfibian",0],
+    ["predator","捕食者","不是 predetor",0],["prey","猎物","不是 pray（祷告！）",0],
+    ["habitat","栖息地","不是 habitt",0],["ecosystem","生态系统","一个词",0],
+    ["extinction","灭绝","不是 extincsion",0],["endangered","濒危的","中间有d",0]
   ]},
   { title:"动物行为", words:[
-    ["migration","迁徙","不是 migracion",0],
-    ["hibernation","冬眠","h不发音 hi-ber-nation",0],
-    ["camouflage","伪装","不是 camoflage",0],
-    ["nocturnal","夜间活动的","不是 nocternal",0],
-    ["antenna","触角","复数是 antennae",0],
-    ["feather","羽毛","不是 fether",0],
-    ["claw","爪子","不是 clore",0],
-    ["beak","喙","不是 beek",0],
+    ["migration","迁徙","不是 migracion",0],["hibernation","冬眠","h不发音",0],
+    ["camouflage","伪装","不是 camoflage",0],["nocturnal","夜间活动的","不是 nocternal",0],
+    ["antenna","触角","复数是 antennae",0],["feather","羽毛","不是 fether",0],
+    ["claw","爪子","不是 clore",0],["beak","喙","不是 beek",0],
     ["gill","鳃","不是 jill",0]
   ]},
   { title:"环境与地理", words:[
-    ["atmosphere","大气层","不是 atomosphere",0],
-    ["carbon dioxide","二氧化碳","dioxide 不是 dioxcide",0],
-    ["greenhouse gas","温室气体","一个概念",0],
-    ["climate change","气候变化","climate 不是 climete",0],
-    ["temperature","温度","temper-a-ture",0],
-    ["glacier","冰川","不是 glacer",0],
-    ["Antarctica","南极洲","中间有c！",0],
-    ["Arctic","北极的","第一个c不要漏",0],
-    ["continent","大陆","不是 contenant",0],
-    ["earthquake","地震","一个词",0],
-    ["drought","干旱","gh不发音",0],
-    ["flood","洪水","不是 flod",0],
-    ["erosion","侵蚀","不是 errosion",0],
-    ["irrigation","灌溉","双r",1],
-    ["vegetation","植被","不是 vegatation",0],
-    ["conservation","保护","不是 conservacian",0],
-    ["sustainable","可持续的","不是 sustanable",0],
-    ["renewable energy","可再生能源","renew-able",0]
+    ["atmosphere","大气层","不是 atomosphere",0],["carbon dioxide","二氧化碳","dioxide不是dioxcide",0],
+    ["greenhouse gas","温室气体","",0],["climate change","气候变化","climate不是climete",0],
+    ["temperature","温度","temper-a-ture",0],["glacier","冰川","不是 glacer",0],
+    ["Antarctica","南极洲","中间有c！",0],["Arctic","北极的","第一个c不要漏",0],
+    ["continent","大陆","不是 contenant",0],["earthquake","地震","一个词",0],
+    ["drought","干旱","gh不发音",0],["flood","洪水","不是 flod",0],
+    ["erosion","侵蚀","不是 errosion",0],["irrigation","灌溉","双r",1],
+    ["vegetation","植被","不是 vegatation",0],["conservation","保护","不是 conservacian",0],
+    ["sustainable","可持续的","不是 sustanable",0],["renewable energy","可再生能源","renew-able",0]
   ]},
   { title:"健康与医学", words:[
-    ["psychology","心理学","p不发音！",0],
-    ["psychiatry","精神病学","p不发音",0],
-    ["symptom","症状","不是 simptom",0],
-    ["diagnosis","诊断","不是 disagnosis",0],
-    ["prescription","处方","不是 perscription",0],
-    ["antibiotics","抗生素","不是 antebiotics",0],
-    ["vaccination","疫苗接种","双c",1],
-    ["immune system","免疫系统","",0],
-    ["nutrition","营养","不是 nutrision",0],
-    ["obesity","肥胖症","不是 obeasity",0],
-    ["diabetes","糖尿病","不是 diabetis",0],
-    ["insomnia","失眠","不是 insominia",0],
-    ["anxiety","焦虑","不是 anxeity",0],
-    ["depression","抑郁症","双s",1],
-    ["therapy","治疗","不是 therpy",0],
-    ["surgeon","外科医生","不是 surgon",0]
+    ["psychology","心理学","p不发音！",0],["psychiatry","精神病学","p不发音",0],
+    ["symptom","症状","不是 simptom",0],["diagnosis","诊断","不是 disagnosis",0],
+    ["prescription","处方","不是 perscription",0],["antibiotics","抗生素","不是 antebiotics",0],
+    ["vaccination","疫苗接种","双c",1],["immune system","免疫系统","",0],
+    ["nutrition","营养","不是 nutrision",0],["obesity","肥胖症","不是 obeasity",0],
+    ["diabetes","糖尿病","不是 diabetis",0],["insomnia","失眠","不是 insominia",0],
+    ["anxiety","焦虑","不是 anxeity",0],["depression","抑郁症","双s",1],
+    ["therapy","治疗","不是 therpy",0],["surgeon","外科医生","不是 surgon",0]
   ]},
   { title:"商业与经济", words:[
-    ["entrepreneur","企业家","entre-pre-neur 最难拼之一",0],
-    ["corporation","公司","不是 corperation",0],
-    ["revenue","收入/营收","不是 revene",0],
-    ["investment","投资","不是 invesment",0],
-    ["bankruptcy","破产","不是 bankrupsy",0],
-    ["inflation","通货膨胀","不是 enflation",0],
-    ["recession","经济衰退","双s",1],
-    ["unemployment","失业","不是 unemployyment",0],
-    ["retail","零售","不是 retal",0],
-    ["wholesale","批发","不是 wholsale",0],
-    ["negotiation","谈判","不是 negociation",0],
-    ["advertisement","广告","advertise-ment",0]
+    ["entrepreneur","企业家","entre-pre-neur",0],["corporation","公司","不是 corperation",0],
+    ["revenue","收入/营收","不是 revene",0],["investment","投资","不是 invesment",0],
+    ["bankruptcy","破产","不是 bankrupsy",0],["inflation","通货膨胀","不是 enflation",0],
+    ["recession","经济衰退","双s",1],["unemployment","失业","不是 unemployyment",0],
+    ["retail","零售","不是 retal",0],["wholesale","批发","不是 wholsale",0],
+    ["negotiation","谈判","不是 negociation",0],["advertisement","广告","advertise-ment",0]
   ]},
   { title:"科技与工程", words:[
-    ["technology","技术","不是 technolgy",0],
-    ["artificial intelligence","人工智能","artificial不是arteficial",0],
-    ["satellite","卫星","双l",1],
-    ["navigation","导航","不是 navagation",0],
-    ["laboratory","实验室","不是 labratory",0],
-    ["appliance","家用电器","不是 applience",0],
-    ["device","设备","device=设备 / devise=发明",0],
-    ["mechanism","机制","不是 mechnisim",0],
+    ["technology","技术","不是 technolgy",0],["artificial intelligence","人工智能","artificial",0],
+    ["satellite","卫星","双l",1],["navigation","导航","不是 navagation",0],
+    ["laboratory","实验室","不是 labratory",0],["appliance","家用电器","不是 applience",0],
+    ["device","设备","device=设备 / devise=发明",0],["mechanism","机制","不是 mechnisim",0],
     ["prototype","原型","不是 prototipe",0]
   ]},
   { title:"历史与考古", words:[
-    ["archaeology","考古学","英式ae",0],
-    ["medieval","中世纪的","不是 medievil",0],
-    ["ancient","古代的","不是 anceint",0],
-    ["civilization","文明","英式s",0],
-    ["monument","纪念碑","不是 monuemnt",0],
-    ["temple","寺庙","不是 tempel",0],
-    ["ceremony","仪式","不是 ceromony",0],
-    ["ritual","仪式","不是 rituel",0],
-    ["manuscript","手稿","manu-script",0],
-    ["excavation","挖掘","不是 excavashion",0]
+    ["archaeology","考古学","英式ae",0],["medieval","中世纪的","不是 medievil",0],
+    ["ancient","古代的","不是 anceint",0],["civilization","文明","英式s",0],
+    ["monument","纪念碑","不是 monuemnt",0],["temple","寺庙","不是 tempel",0],
+    ["ceremony","仪式","不是 ceromony",0],["ritual","仪式","不是 rituel",0],
+    ["manuscript","手稿","manu-script",0],["excavation","挖掘","不是 excavashion",0]
   ]},
-  { title:"学科后缀（Section 4 高频）", words:[
-    ["biology","生物学","-ology 学科",0],
-    ["psychology","心理学","p不发音",0],
-    ["ecology","生态学","",0],
-    ["geography","地理学","-graphy",0],
-    ["bibliography","参考书目","",0],
-    ["economics","经济学","-ics",0],
-    ["statistics","统计学","",0],
-    ["scientist","科学家","-ist",0],
-    ["education","教育","-tion",0],
-    ["conclusion","结论","-sion",0],
-    ["equipment","设备","-ment",0],
-    ["awareness","意识","-ness",0]
+  { title:"学科后缀（高频）", words:[
+    ["biology","生物学","-ology",0],["psychology","心理学","p不发音",0],
+    ["ecology","生态学","",0],["geography","地理学","-graphy",0],
+    ["bibliography","参考书目","",0],["economics","经济学","-ics",0],
+    ["statistics","统计学","",0],["scientist","科学家","-ist",0],
+    ["education","教育","-tion",0],["conclusion","结论","-sion",0],
+    ["equipment","设备","-ment",0],["awareness","意识","-ness",0]
   ]}
 ]},
 { name:"速查表 · 高频陷阱", cats:[
   { title:"双写字母陷阱 TOP 15", words:[
-    ["accommodation","住宿","双c双m",1],
-    ["recommend","推荐","双m",1],
-    ["necessary","必要的","双s",1],
-    ["successful","成功的","双c双s",1],
-    ["opportunity","机会","双p",1],
-    ["immediately","立即","双m",1],
-    ["appointment","预约","双p",1],
-    ["commission","委员会/佣金","双m双s",1],
-    ["committee","委员会","双m双t双e",1],
-    ["questionnaire","调查问卷","双n",1],
-    ["embarrass","使尴尬","双r双s",1],
-    ["possession","拥有","双s双s",1],
-    ["professional","专业的","双f",0],
-    ["parallel","平行的","双l",1],
+    ["accommodation","住宿","双c双m",1],["recommend","推荐","双m",1],
+    ["necessary","必要的","双s",1],["successful","成功的","双c双s",1],
+    ["opportunity","机会","双p",1],["immediately","立即","双m",1],
+    ["appointment","预约","双p",1],["commission","委员会/佣金","双m双s",1],
+    ["committee","委员会","双m双t双e",1],["questionnaire","调查问卷","双n",1],
+    ["embarrass","使尴尬","双r双s",1],["possession","拥有","双s双s",1],
+    ["professional","专业的","双f",0],["parallel","平行的","双l",1],
     ["satellite","卫星","双l",1]
   ]},
   { title:"不发音字母陷阱", words:[
-    ["Wednesday","星期三","d不发音",0],
-    ["February","二月","r不发音",0],
-    ["government","政府","n不发音",0],
-    ["environment","环境","n不发音",0],
-    ["exhibition","展览","h不发音",0],
-    ["vehicle","车辆","h不发音",0],
-    ["psychology","心理学","p不发音",0],
-    ["receipt","收据","p不发音",0],
-    ["castle","城堡","t不发音",0],
-    ["mortgage","按揭","t不发音",0],
-    ["drought","干旱","gh不发音",0],
-    ["straight","直的","gh不发音",0],
-    ["foreign","外国的","g不发音",0],
-    ["campaign","活动","g不发音",0],
+    ["Wednesday","星期三","d不发音",0],["February","二月","r不发音",0],
+    ["government","政府","n不发音",0],["environment","环境","n不发音",0],
+    ["exhibition","展览","h不发音",0],["vehicle","车辆","h不发音",0],
+    ["psychology","心理学","p不发音",0],["receipt","收据","p不发音",0],
+    ["castle","城堡","t不发音",0],["mortgage","按揭","t不发音",0],
+    ["drought","干旱","gh不发音",0],["straight","直的","gh不发音",0],
+    ["foreign","外国的","g不发音",0],["campaign","活动","g不发音",0],
     ["knowledge","知识","d不发音",0]
   ]},
   { title:"ie / ei 陷阱", words:[
-    ["receive","收到","after c → ei",0],
-    ["receipt","收据","after c → ei",0],
-    ["ceiling","天花板","after c → ei",0],
-    ["believe","相信","ie",0],
-    ["achieve","达到","ie",0],
-    ["field","领域","ie",0],
-    ["foreign","外国的","例外！",0],
-    ["height","高度","例外！",0],
-    ["weight","重量","例外！",0],
-    ["science","科学","例外！",0]
+    ["receive","收到","after c → ei",0],["receipt","收据","after c → ei",0],
+    ["ceiling","天花板","after c → ei",0],["believe","相信","ie",0],
+    ["achieve","达到","ie",0],["field","领域","ie",0],
+    ["foreign","外国的","例外！",0],["height","高度","例外！",0],
+    ["weight","重量","例外！",0],["science","科学","例外！",0]
   ]},
   { title:"词尾变化陷阱", words:[
-    ["truly","真正地","true去e+ly（不是truely）",0],
-    ["argument","争论","argue去e+ment",0],
-    ["judgment","判断","或 judgement",0],
-    ["definitely","肯定地","definite+ly",0],
-    ["unfortunately","不幸地","unfortunate+ly",0],
-    ["basically","基本上","basic+ally",0],
+    ["truly","真正地","true去e+ly（不是truely）",0],["argument","争论","argue去e+ment",0],
+    ["judgment","判断","或 judgement",0],["definitely","肯定地","definite+ly",0],
+    ["unfortunately","不幸地","unfortunate+ly",0],["basically","基本上","basic+ally",0],
     ["publicly","公开地","public+ly（不是publically）",0]
   ]},
   { title:"近音/近形混淆", words:[
-    ["abroad","国外","不是 aboard/board",0],
-    ["prey","猎物","不是 pray（祷告）",0],
-    ["prize","奖品","不是 prise",0],
-    ["survey","调查","不是 serve",0],
-    ["status","状态","不是 statue（雕像）",0],
-    ["angle","角度","不是 angel（天使）",0],
-    ["contract","合同","不是 contact（联系）",0],
-    ["principal","校长/本金","不是 principle（原则）",0],
-    ["quiet","安静的","不是 quite（相当）",0],
-    ["dairy","奶制品","不是 diary（日记）",0],
-    ["dessert","甜品","不是 desert（沙漠）",0],
-    ["latter","后者","不是 later（后来）",0],
-    ["costume","服装","不是 custom（习俗）",0],
-    ["lose","失去","不是 loose（松的）",0]
+    ["abroad","国外","不是 aboard",0],["prey","猎物","不是 pray（祷告）",0],
+    ["prize","奖品","不是 prise",0],["survey","调查","不是 serve",0],
+    ["status","状态","不是 statue（雕像）",0],["angle","角度","不是 angel（天使）",0],
+    ["contract","合同","不是 contact",0],["principal","校长/本金","不是 principle（原则）",0],
+    ["quiet","安静的","不是 quite（相当）",0],["dairy","奶制品","不是 diary（日记）",0],
+    ["dessert","甜品","不是 desert（沙漠）",0],["latter","后者","不是 later",0],
+    ["costume","服装","不是 custom（习俗）",0],["lose","失去","不是 loose（松的）",0]
   ]},
-  { title:"速查自测20题（遮住英文栏！）", words:[
-    ["accommodation","住宿","双c双m",1],
-    ["recommend","推荐","双m",1],
-    ["necessary","必要的","双s",1],
-    ["opportunity","机会","双p",1],
-    ["Wednesday","星期三","d不发音",0],
-    ["February","二月","r不发音",0],
-    ["government","政府","n不发音",0],
-    ["environment","环境","n不发音",0],
-    ["foreign","外国的","g不发音",0],
-    ["colleague","同事","ea！",0],
-    ["receive","收到","ei",0],
-    ["believe","相信","ie",0],
-    ["truly","真正地","不是truely",0],
-    ["definitely","肯定地","definite+ly",0],
-    ["separate","分开的","a不是e",0],
-    ["questionnaire","调查问卷","双n",0],
-    ["committee","委员会","双m双t双e",0],
-    ["psychology","心理学","p不发音",0],
-    ["exhibition","展览","h不发音",0],
-    ["knowledge","知识","漏d",0]
+  { title:"速查自测20题（遮住英文栏自测！）", words:[
+    ["accommodation","住宿","双c双m",1],["recommend","推荐","双m",1],
+    ["necessary","必要的","双s",1],["opportunity","机会","双p",1],
+    ["Wednesday","星期三","d不发音",0],["February","二月","r不发音",0],
+    ["government","政府","n不发音",0],["environment","环境","n不发音",0],
+    ["foreign","外国的","g不发音",0],["colleague","同事","ea！",0],
+    ["receive","收到","ei",0],["believe","相信","ie",0],
+    ["truly","真正地","不是truely",0],["definitely","肯定地","definite+ly",0],
+    ["separate","分开的","a不是e",0],["questionnaire","调查问卷","双n",0],
+    ["committee","委员会","双m双t双e",0],["psychology","心理学","p不发音",0],
+    ["exhibition","展览","h不发音",0],["knowledge","知识","漏d",0]
   ]}
 ]}
 ];
 
+// ═══════════════ STATE ═══════════════
+const STORAGE_KEY = 'ielts_vocab_checked';
+let checked = new Set();
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    checked = raw ? new Set(JSON.parse(raw)) : new Set();
+  } catch { checked = new Set(); }
+}
+
+function saveState() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify([...checked]));
+}
+
+function makeId(tabIdx, catIdx, wordIdx) {
+  return `v${tabIdx}-${catIdx}-${wordIdx}`;
+}
+
+// ═══════════════ COUNTS ═══════════════
+function getCounts(tabIdx) {
+  let total = 0, done = 0;
+  const section = SECTIONS[tabIdx];
+  section.cats.forEach((cat, ci) => {
+    cat.words.forEach((_, wi) => {
+      total++;
+      if (checked.has(makeId(tabIdx, ci, wi))) done++;
+    });
+  });
+  return { total, done };
+}
+
+function getGlobalCounts() {
+  let total = 0, done = 0;
+  SECTIONS.forEach((section, ti) => {
+    section.cats.forEach((cat, ci) => {
+      cat.words.forEach((_, wi) => {
+        total++;
+        if (checked.has(makeId(ti, ci, wi))) done++;
+      });
+    });
+  });
+  return { total, done };
+}
+
+function getCatCounts(tabIdx, catIdx) {
+  let total = 0, done = 0;
+  const cat = SECTIONS[tabIdx].cats[catIdx];
+  cat.words.forEach((_, wi) => {
+    total++;
+    if (checked.has(makeId(tabIdx, catIdx, wi))) done++;
+  });
+  return { total, done };
+}
+
 // ═══════════════ RENDER ═══════════════
 let currentTab = 0;
+
+function updateGlobalProgress() {
+  const { total, done } = getGlobalCounts();
+  const pct = total ? Math.round((done / total) * 100) : 0;
+  document.getElementById('progressLabel').textContent = `已掌握 ${done}/${total}`;
+  document.getElementById('progressPct').textContent = pct + '%';
+  document.getElementById('progressBar').style.width = pct + '%';
+}
 
 function render(tabIdx, filter) {
   const section = SECTIONS[tabIdx];
   const container = document.getElementById('content');
   const q = (filter || '').toLowerCase().trim();
-
   let html = '';
 
   section.cats.forEach((cat, ci) => {
     let filtered = cat.words;
     if (q) {
       filtered = cat.words.filter(w =>
-        w[0].toLowerCase().includes(q) ||
-        w[1].includes(q) ||
-        (w[2] && w[2].includes(q))
+        w[0].toLowerCase().includes(q) || w[1].includes(q) || (w[2] && w[2].includes(q))
       );
     }
     if (filtered.length === 0) return;
 
+    const { total: catTotal, done: catDone } = getCatCounts(tabIdx, ci);
+    const catPct = catTotal ? Math.round((catDone / catTotal) * 100) : 0;
+
     html += `<div class="cat-card${q ? ' open' : (ci === 0 ? ' open' : '')}">`;
     html += `<div class="cat-header" onclick="toggleCat(this.parentElement)">`;
-    html += `<span>${cat.title} <span style="font-size:11px;color:var(--muted)">(${filtered.length})</span></span>`;
+    html += `<div class="cat-header-left">`;
+    html += `<span>${cat.title}</span>`;
+    html += `<span class="cat-count">${catDone}/${catTotal}</span>`;
+    html += `</div>`;
+    html += `<span class="cat-progress">${catPct}%</span>`;
     html += `<span class="cat-arrow">▶</span>`;
     html += `</div><div class="cat-body">`;
 
-    filtered.forEach(w => {
+    cat.words.forEach((w, wi) => {
+      if (q && !w[0].toLowerCase().includes(q) && !w[1].includes(q) && !(w[2] && w[2].includes(q))) return;
+
+      const id = makeId(tabIdx, ci, wi);
+      const isDone = checked.has(id);
+
       const traps = [];
       if (w[3] === 1) traps.push('<span class="tag tag-double">双写</span>');
       if (w[2] && w[2].includes('不发音')) traps.push('<span class="tag tag-silent">不发音</span>');
-      if (w[2] && (w[2].includes('ei') || w[2].includes('ie'))) traps.push('<span class="tag tag-ei">ie/ei</span>');
+      if (w[2] && (w[2].includes('ei') || w[2].includes('→ ei') || w[2].includes('ie') || w[2].includes('→ ie'))) traps.push('<span class="tag tag-ei">ie/ei</span>');
       if (w[2] && w[2].includes('不是')) traps.push('<span class="tag tag-trap">易错</span>');
 
-      html += `<div class="word-row">`;
-      html += `<span class="word-en">${highlight(w[0], q)}</span>`;
+      html += `<div class="word-row${isDone ? ' done' : ''}" data-id="${id}" onclick="toggleWord('${id}')">`;
+      html += `<div class="cb"></div>`;
+      html += `<div class="word-info">`;
+      html += `<span class="word-en">${hl(w[0], q)}</span>`;
       html += `<span class="word-cn">${w[1]}</span>`;
       if (w[2]) {
-        html += `<span class="word-trap">${traps.join('')}${highlight(w[2], q)}</span>`;
+        html += `<span class="word-trap">${traps.join('')}${hl(w[2], q)}</span>`;
       }
-      html += `</div>`;
+      html += `</div></div>`;
     });
 
     html += `</div></div>`;
@@ -708,12 +607,47 @@ function render(tabIdx, filter) {
   }
 
   container.innerHTML = html;
+  updateGlobalProgress();
 }
 
-function highlight(text, q) {
+function hl(text, q) {
   if (!q) return text;
-  const re = new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
-  return text.replace(re, '<span class="hl">$1</span>');
+  const escaped = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return text.replace(new RegExp(`(${escaped})`, 'gi'), '<span class="hl">$1</span>');
+}
+
+// ═══════════════ ACTIONS ═══════════════
+function toggleWord(id) {
+  if (checked.has(id)) {
+    checked.delete(id);
+  } else {
+    checked.add(id);
+  }
+  saveState();
+
+  // Update just the clicked row
+  const row = document.querySelector(`[data-id="${id}"]`);
+  if (row) {
+    row.classList.toggle('done', checked.has(id));
+  }
+
+  // Update parent cat card
+  const card = row ? row.closest('.cat-card') : null;
+  if (card) {
+    const catHeader = card.querySelector('.cat-header-left span.cat-count');
+    const catPct = card.querySelector('.cat-progress');
+
+    // Find cat index from id
+    const parts = id.split('-');
+    const tabIdx = parseInt(parts[0].replace('v', ''));
+    const catIdx = parseInt(parts[1]);
+    const { total, done } = getCatCounts(tabIdx, catIdx);
+    const pct = total ? Math.round((done / total) * 100) : 0;
+    if (catHeader) catHeader.textContent = `${done}/${total}`;
+    if (catPct) catPct.textContent = pct + '%';
+  }
+
+  updateGlobalProgress();
 }
 
 function toggleCat(card) {
@@ -730,42 +664,51 @@ function switchTab(idx) {
 function doSearch() {
   const q = document.getElementById('search').value;
   if (q.trim()) {
-    // Search across all sections
     const container = document.getElementById('content');
     let html = '';
     let foundAny = false;
 
     SECTIONS.forEach((section, si) => {
       let secHTML = '';
-      section.cats.forEach(cat => {
+      section.cats.forEach((cat, ci) => {
         const filtered = cat.words.filter(w =>
-          w[0].toLowerCase().includes(q.toLowerCase()) ||
-          w[1].includes(q) ||
-          (w[2] && w[2].includes(q))
+          w[0].toLowerCase().includes(q.toLowerCase()) || w[1].includes(q) || (w[2] && w[2].includes(q))
         );
         if (filtered.length === 0) return;
         foundAny = true;
 
+        const { total: catTotal, done: catDone } = getCatCounts(si, ci);
+        const catPct = catTotal ? Math.round((catDone / catTotal) * 100) : 0;
+
         secHTML += `<div class="cat-card open">`;
         secHTML += `<div class="cat-header" onclick="toggleCat(this.parentElement)">`;
-        secHTML += `<span>${cat.title} <span style="font-size:11px;color:var(--muted)">(${filtered.length})</span></span>`;
+        secHTML += `<div class="cat-header-left">`;
+        secHTML += `<span>${cat.title}</span>`;
+        secHTML += `<span class="cat-count">${catDone}/${catTotal}</span>`;
+        secHTML += `</div>`;
+        secHTML += `<span class="cat-progress">${catPct}%</span>`;
         secHTML += `<span class="cat-arrow">▶</span>`;
         secHTML += `</div><div class="cat-body">`;
 
-        filtered.forEach(w => {
+        cat.words.forEach((w, wi) => {
+          if (!w[0].toLowerCase().includes(q.toLowerCase()) && !w[1].includes(q) && !(w[2] && w[2].includes(q))) return;
+
+          const id = makeId(si, ci, wi);
+          const isDone = checked.has(id);
+
           const traps = [];
           if (w[3] === 1) traps.push('<span class="tag tag-double">双写</span>');
           if (w[2] && w[2].includes('不发音')) traps.push('<span class="tag tag-silent">不发音</span>');
-          if (w[2] && (w[2].includes('ei') || w[2].includes('ie'))) traps.push('<span class="tag tag-ei">ie/ei</span>');
+          if (w[2] && (w[2].includes('ei') || w[2].includes('→ ei') || w[2].includes('ie') || w[2].includes('→ ie'))) traps.push('<span class="tag tag-ei">ie/ei</span>');
           if (w[2] && w[2].includes('不是')) traps.push('<span class="tag tag-trap">易错</span>');
 
-          secHTML += `<div class="word-row">`;
-          secHTML += `<span class="word-en">${highlight(w[0], q)}</span>`;
+          secHTML += `<div class="word-row${isDone ? ' done' : ''}" data-id="${id}" onclick="toggleWord('${id}')">`;
+          secHTML += `<div class="cb"></div>`;
+          secHTML += `<div class="word-info">`;
+          secHTML += `<span class="word-en">${hl(w[0], q)}</span>`;
           secHTML += `<span class="word-cn">${w[1]}</span>`;
-          if (w[2]) {
-            secHTML += `<span class="word-trap">${traps.join('')}${highlight(w[2], q)}</span>`;
-          }
-          secHTML += `</div>`;
+          if (w[2]) secHTML += `<span class="word-trap">${traps.join('')}${hl(w[2], q)}</span>`;
+          secHTML += `</div></div>`;
         });
 
         secHTML += `</div></div>`;
@@ -783,9 +726,21 @@ function doSearch() {
   } else {
     render(currentTab, '');
   }
+  updateGlobalProgress();
 }
 
-// Init
+function resetAll() {
+  if (confirm('确定要重置全部词汇进度吗？此操作不可撤销。')) {
+    checked.clear();
+    saveState();
+    render(currentTab, '');
+    updateGlobalProgress();
+  }
+}
+
+// ═══════════════ INIT ═══════════════
+loadState();
+updateGlobalProgress();
 render(0, '');
 </script>
 </body>
